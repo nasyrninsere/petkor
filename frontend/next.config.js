@@ -18,9 +18,12 @@ const nextConfig = {
     ],
   },
 
-  // API 프록시 (선택: 백엔드 URL이 환경변수로 관리될 때)
+  // API 프록시 - localhost일 때는 rewrite 비활성화 (Vercel 빌드 오류 방지)
   async rewrites() {
-    const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL || "http://localhost:8000";
+    const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+    if (!apiUrl || apiUrl.includes("localhost")) {
+      return [];
+    }
     return [
       {
         source: "/api/:path*",
