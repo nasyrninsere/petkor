@@ -1,0 +1,164 @@
+/* ============================================
+   글로벌 CSS - 펫 트래블 디자인 시스템 (라이트 테마)
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* 브랜드 컬러 */
+  --primary: #1d62e1;
+  --primary-light: #4a84f0;
+  --primary-dark: #1450c0;
+  --secondary: #e85c5c;
+  --accent: #17b8a6;
+
+  /* 배경 */
+  --bg-base: #f4f6fb;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f4ff;
+  --bg-glass: rgba(255, 255, 255, 0.8);
+
+  /* 텍스트 */
+  --text-primary: #1a1f36;
+  --text-secondary: #4a5270;
+  --text-muted: #9299b8;
+
+  /* 테두리 */
+  --border: #e2e7f0;
+  --border-hover: rgba(29, 98, 225, 0.35);
+
+  /* 그림자 */
+  --shadow-sm: 0 1px 4px rgba(29, 98, 225, 0.06);
+  --shadow-md: 0 4px 16px rgba(29, 98, 225, 0.10);
+  --shadow-lg: 0 8px 32px rgba(29, 98, 225, 0.14);
+  --shadow-glow: 0 0 20px rgba(29, 98, 225, 0.20);
+
+  /* 전환 */
+  --transition: 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 스크롤바 ─────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f0f2f8; }
+::-webkit-scrollbar-thumb {
+  background: rgba(29, 98, 225, 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(29, 98, 225, 0.45); }
+
+/* ── 공통 컴포넌트 ───────────────────────── */
+.glass {
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: all var(--transition);
+  box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* 버튼 */
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.btn-primary:hover {
+  background: var(--primary-light);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+.btn-primary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 배지 */
+.badge-pet-ok {
+  background: rgba(23, 184, 166, 0.12);
+  color: #0f9e8e;
+  border: 1px solid rgba(23, 184, 166, 0.3);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.badge-pet-check {
+  background: rgba(232, 92, 92, 0.10);
+  color: #c94040;
+  border: 1px solid rgba(232, 92, 92, 0.25);
+  border-radius: 20px;
+  padding: 2px 10px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* 유틸 */
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 16px 0;
+}
+
+/* 로딩 스피너 */
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(29, 98, 225, 0.15);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 말풍선 애니메이션 */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-in-up {
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+/* 반응형 */
+@media (max-width: 768px) {
+  :root { font-size: 14px; }
+}

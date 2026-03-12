@@ -1,0 +1,109 @@
+/* page.module.css - 라이트 테마 메인 레이아웃 */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+/* ── 헤더 ─────────────────────────────────── */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  height: 52px;
+  flex-shrink: 0;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(29, 98, 225, 0.06);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logoIcon { font-size: 1.4rem; }
+.logoTitle {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--primary);
+}
+.tagline {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ── 필터바 래퍼 ─────────────────────────── */
+.filterWrap { flex-shrink: 0; }
+
+/* ── 메인 (지도 + 챗봇) ──────────────────── */
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* 지도 섹션 - 왼쪽 넓게 차지 */
+.mapSection {
+  flex: 1;
+  min-width: 0;
+  padding: 12px;
+  position: relative;
+}
+
+/* 지도 없을 때 플레이스홀더 */
+.mapPlaceholder {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  text-align: center;
+  color: var(--text-muted);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.85);
+  padding: 20px 28px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+.mapPlaceholder p { font-size: 0.85rem; line-height: 1.6; }
+
+/* 챗봇 섹션 - 오른쪽 고정 폭 */
+.chatSection {
+  width: 380px;
+  flex-shrink: 0;
+  padding: 12px 12px 12px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── 추천 장소 카드 리스트 ────────────────── */
+.listSection {
+  flex-shrink: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+}
+
+/* ── 반응형 ──────────────────────────────── */
+@media (max-width: 900px) {
+  .main { flex-direction: column; }
+  .chatSection {
+    width: 100%;
+    padding: 8px;
+    height: 350px;
+  }
+  .mapSection { flex: none; height: 280px; }
+  .tagline { display: none; }
+}
